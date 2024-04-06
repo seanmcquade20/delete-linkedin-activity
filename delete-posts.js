@@ -161,15 +161,15 @@ async function init() {
 
 			deleteButton.click();
 
-			const modalAcceptButton = await awaitThisTimed("button.feed-components-shared-decision-modal__confirm-button.artdeco-button.artdeco-button--primary.artdeco-button--2");
-			console.log(modalAcceptButton);
-			if (true !== modalAcceptButton instanceof HTMLElement) {
-				throw "Post deletion modal not found!";
-			} else {
-				console.log("modal accept button found");
-			}
+			const modalAcceptButton = await awaitThisTimed("button.artdeco-button--primary.artdeco-button--2");
+            console.log(modalAcceptButton);
+            if (!(modalAcceptButton instanceof HTMLElement)) {
+                throw "Post deletion modal not found!";
+            } else {
+                console.log("modal accept button found");
+            }
 
-			modalAcceptButton.click();
+            modalAcceptButton.click();
 			const result = await awaitGoneTimed(modalAcceptButton);
 			console.log(result);
 			if (null == result) {
